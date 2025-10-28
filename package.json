@@ -1,0 +1,58 @@
+{
+  "name": "password-reset-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "type": "module",
+  "license": "AGPL-version-3.0",
+  "private": false,
+  "directories": {
+    "test": "test"
+  },
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": "",
+  "keywords": [],
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "contributors": [],
+  "scripts": {
+    "test": "npm run build:ts && tsc -p test/tsconfig.json && c8 node --test -r ts-node/register \"test/**/*.ts\"",
+    "start": "npm run build:ts && fastify start -l info dist/app.js",
+    "build:ts": "tsc",
+    "watch:ts": "tsc -w",
+    "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
+    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js"
+  },
+  "dependencies": {
+    "@fastify/autoload": "^6.0.0",
+    "@fastify/one-line-logger": "^2.0.2",
+    "@fastify/sensible": "^6.0.0",
+    "@fastify/swagger": "^9.5.2",
+    "@fastify/type-provider-typebox": "^6.1.0",
+    "@scalar/fastify-api-reference": "^1.38.1",
+    "@sinclair/typebox": "^0.34.41",
+    "fastify": "^5.0.0",
+    "fastify-cli": "^7.3.0",
+    "fastify-plugin": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.1.0",
+    "c8": "^10.1.2",
+    "concurrently": "^9.0.0",
+    "fastify-tsconfig": "^2.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "~5.6.3"
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
+}
