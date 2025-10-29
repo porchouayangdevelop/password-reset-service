@@ -28,7 +28,8 @@ const app: FastifyPluginAsync<AppOptions> = async (fastify, options): Promise<vo
 	void fastify.register(AutoLoad, {
 		dir: path.join(__dirname, 'routes/'),
 		options: options
-	})
+	});
+	
 }
 
 export default app;
